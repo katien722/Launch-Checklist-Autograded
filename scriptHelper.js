@@ -32,7 +32,7 @@ function validateInput(testInput) {
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 
-    if (validateInput(pilot) === 'Empty' || validateInput(copilot) === "Empty" || validateInput(fuelLevel) === "Empty" || validateInput(cargoLevel) === "Empty" ){
+    if (validateInput(pilot) === "Empty" || validateInput(copilot) === "Empty" || validateInput(fuelLevel) === "Empty" || validateInput(cargoLevel) === "Empty" ){
       
     
         window.alert('All fields are required')
@@ -40,10 +40,23 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         
     } else if (validateInput(fuelLevel) === "Not a Number" || validateInput(cargoLevel) === "Not a Number") {
         window.alert('Fuel level and Cargo levels must be numbers')
-
     } else {
-       
-        
+        list.style.visibility = "visible"
+        const pilotStatus = document.getElementById("pilotStatus")
+        const copilotStatus = document.getElementById("copilotStatus")
+        const fuelStatus = document.getElementById("fuelStatus")
+        const cargoStatus = document.getElementById("cargoStatus")
+
+        pilotStatus.innerHTML = (`Pilot ${pilot} is ready for launch`)
+ copilotStatus.innerHTML = (`Co-pilot ${copilot} is ready for launch`)
+
+   if 
+    (fuelLevel < 10000)
+   fuelStatus.innerHTML = (`Fuel level too low for launch`)
+
+   } if (cargoLevel > 10000)
+    cargoStatus.innerHTML = (`Cargo mass too heavy for launch`)
+
 }
 
     
