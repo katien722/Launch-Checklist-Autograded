@@ -68,8 +68,12 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         }
 
     }
+    if (launchStatus.innerHTML === 'Shuttle is Ready for Launch') {
+        launchStatus.style.color = "green"
+    } else if (launchStatus.innerHTML === 'Shuttle Not Ready for Launch') {
+        launchStatus.style.color = "red"
 }
-
+}
 
 async function myFetch() {
     let planetsReturned;
