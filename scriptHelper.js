@@ -4,18 +4,22 @@
 require('cross-fetch/polyfill');
 
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
-    // Here is the HTML formatting for our mission target div.
-    /*
+
+//see pic of Carrie's review on Thursday with 'data.forEach(planet => { ...will we use this?
+
+
+    
+    document.getElementById("missionTarget").innerHTML = `
                  <h2>Mission Destination</h2>
                  <ol>
-                     <li>Name: </li>
-                     <li>Diameter: </li>
-                     <li>Star: ${star}</li>
-                     <li>Distance from Earth: </li>
-                     <li>Number of Moons: </li>
+                     <li>name: ${name} </li> 
+                     <li>diameter: ${diameter} </li>
+                     <li>star: ${star}</li>
+                     <li>distance: ${distance}</li>
+                     <li>moons: ${moons} </li>
                  </ol>
-                 <img src="">
-    */
+                 <img src="${imageUrl}">`
+    
 }
 
 function validateInput(testInput) {
@@ -76,18 +80,17 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 }
 
 async function myFetch() {
-    let planetsReturned;
-
-    planetsReturned = await fetch().then(function (response) {
-    });
-
-    return planetsReturned;
+    let planetsReturned = await fetch("https:handlers.education.launchcode.org/static/planets.json"); 
+    let data = await planetsReturned.json();
+    return data; 
 }
 
 function pickPlanet(planets) {
+  return planets[(Math.floor(Math.random() * planets.length))];
 }
+console.log(pickPlanet(planets))
 
-module.exports.addDestinationInfo = addDestinationInfo;
+module.exports.addDestinationInfo = paddDestinationInfo;
 module.exports.validateInput = validateInput;
 module.exports.formSubmission = formSubmission;
 module.exports.pickPlanet = pickPlanet;
